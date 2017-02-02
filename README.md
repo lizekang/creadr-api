@@ -9,32 +9,34 @@ python 2.7 on Flask
 
 **steps**
 - clone the repo
-`git clone git@github.com:creadr/creadr-api.git`
-`cd creadr-api`
+```sh
+git clone git@github.com:creadr/creadr-api.git
+cd creadr-api
+```
 
 - set up virtual env
-```
+```sh
 virtualenv ~/.venv/creadr-api
 . ~/.venv/creadr-api/bin/activate
 ```
 
 - install dependencies
-```
+```sh
 pip install -r requirements.txt
 ```
 
 - run test
-```
-python main_test.py
+```sh
+python manage.py test
 ```
 
 - run server locally
-```
-python main.py
+```sh
+python manage.py runserver
 ```
 
 - test server
-```
+```sh
 $ curl localhost:8080
 Hello World!
 ```

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -14,7 +13,6 @@ import thulac
 
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def hello():

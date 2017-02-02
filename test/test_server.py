@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import main
+from creadr.app import app
 import unittest
 
 
 class MainTestCase(unittest.TestCase):
 
     def test_index(self):
-        main.app.testing = True
-        client = main.app.test_client()
+        app.testing = True
+        client = app.test_client()
 
         r = client.get('/')
         assert r.status_code == 200
