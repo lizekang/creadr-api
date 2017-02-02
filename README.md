@@ -1,4 +1,5 @@
-# creadr-api
+# creadr api
+python 2.7 on Flask
 
 ## dev environment setup (Mac & Linux)
 
