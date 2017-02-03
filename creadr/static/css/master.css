@@ -1,0 +1,15 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+h1 {
+  margin: 0;
+  padding-left: 2rem;
+  line-height: 2em;
+}
+p {
+  margin: 1rem 0 0;
+  padding-left: 2rem;
+}

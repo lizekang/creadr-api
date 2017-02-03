@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}500 Error{% endblock %}
+{% block body %}
+  <h1>Something Just Went Wrong.</h1>
+  <p><strong>Detail</strong>{{error}}</p>
+{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="/static/css/master.css">
+{% endblock %}
