@@ -27,12 +27,12 @@ pip install -r requirements.txt
 
 - run test
 ```sh
-python manage.py test
+./manage.py test
 ```
 
 - run server locally
 ```sh
-python manage.py runserver
+./manage.py runserver
 ```
 
 - test server
