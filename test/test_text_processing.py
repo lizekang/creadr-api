@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import pytest
 from creadr.split_zh_en import is_zh
 from creadr.split_zh_en import split_zh_en
 @pytest.mark.parametrize(
     "input, expected", [
-        ("我", True),
+        ("我".decode('utf-8'), True),
         ("a", False),
         (",", False)
     ]
