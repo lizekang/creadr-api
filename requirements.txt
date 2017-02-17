@@ -5,3 +5,4 @@ jieba
 pypinyin
 requests
 thulac
+pytest
