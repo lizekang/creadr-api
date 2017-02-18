@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import unittest
+import pytest
 from flask_script import Manager
 from creadr.app import app
 
@@ -19,11 +19,15 @@ def test():
 
     """Runs the unit tests without test coverage."""
 
-    tests = unittest.TestLoader().discover('test', pattern='test_*.py')
-    result = unittest.TextTestRunner(verbosity=2).run(tests)
-    if result.wasSuccessful():
-        return 0
-    return 1
+    # tests = unittest.TestLoader().discover('test', pattern='test_*.py')
+    # result = unittest.TextTestRunner(verbosity=2).run(tests)
+
+    errno = pytest.main(args=['-v'])
+    return errno
+    # sys.exit(errno)
+    # if result.wasSuccessful():
+        # return 0
+    # return 1
 
 
 @manager.command
