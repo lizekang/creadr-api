@@ -6,28 +6,35 @@ def split_zh_en(string):
     string = string.decode('utf-8')
 
     unicodeStr = string
-    zh_group = []
+    zh_en_group = []
     zh_gather = ""
+    en_gather = ""
     zh_status = False
+    mark = {"en": 0,"zh": 1}
 
     for c in unicodeStr:
         if not zh_status and is_zh(c):
             zh_status = True
+            if en_gather != "":
+                zh_en_group.append([mark["en"], en_gather])
+                en_gather = ""
         elif not is_zh(c) and zh_status:
             zh_status = False
             if zh_gather != "":
-                zh_group.append(zh_gather.encode('utf-8'))
+                zh_en_group.append([mark["zh"], zh_gather.encode('utf-8')])
         if zh_status:
             zh_gather += c
         else:
+            en_gather += c
             zh_gather = ""
 
 
-    if zh_gather != "":
-# return bytethings
-        zh_group.append(zh_gather.encode('utf-8'))
+    if en_gather != "":
+        zh_en_group.append([mark["en"], en_gather])
+    elif zh_gather != "":
+        zh_en_group.append([mark["zh"], zh_gather.encode('utf-8')])
 
-    return zh_group
+    return zh_en_group
 
 
 def is_zh(c):
@@ -59,3 +66,5 @@ def is_zh(c):
 
     else:
         return False
+
+#print split_zh_en('虽然对str调用encode()方法是错误的')

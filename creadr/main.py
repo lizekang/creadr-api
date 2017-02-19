@@ -3,9 +3,10 @@
 
 from .app import app
 
-from flask import render_template, jsonify
+from flask import render_template, jsonify, request
 from pypinyin import pinyin, lazy_pinyin
 import jieba
+from creadr_text_processing import print_data_in_json
 # import thulac
 # import json
 import logging
@@ -21,6 +22,11 @@ def index():
 def all_api():
     # TODO:many things to do
     return jsonify({'api': ['various thing', 'so on', 'lol', '23333']})
+
+@app.route('/api/getResult',methods=['POST'])
+def return_json():
+    text = request.form.get('text').encode('utf-8')
+    return jsonify(print_data_in_json(text))
 
 @app.route('/cut/<text>')
 def cut_text(text):
