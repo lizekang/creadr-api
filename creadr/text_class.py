@@ -24,7 +24,7 @@ class AnalyzedWord(object):
     def to_json(self):
         """demo one way to display word, pinyin and nature in json"""
         return {
-            'word': self.word.encode('utf-8'),
+            'word': self.word,
             'pinyin': self.pinyin,
             'nature': self.nature
         }
