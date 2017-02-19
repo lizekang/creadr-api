@@ -6,7 +6,7 @@ from .app import app
 from flask import render_template, jsonify, request
 from pypinyin import pinyin, lazy_pinyin
 import jieba
-from creadr_text_processing import print_data_in_json
+from creadr_text_processing import cut
 # import thulac
 # import json
 import logging
@@ -26,7 +26,7 @@ def all_api():
 @app.route('/api/getResult',methods=['POST'])
 def return_json():
     text = request.form.get('text').encode('utf-8')
-    return jsonify(print_data_in_json(text))
+    return jsonify(cut(text))
 
 @app.route('/cut/<text>')
 def cut_text(text):
