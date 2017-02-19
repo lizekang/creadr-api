@@ -22,7 +22,7 @@ def test():
     # tests = unittest.TestLoader().discover('test', pattern='test_*.py')
     # result = unittest.TextTestRunner(verbosity=2).run(tests)
 
-    errno = pytest.main(args=['-v'])
+    errno = pytest.main(args=['-v', './test'])
     return errno
     # sys.exit(errno)
     # if result.wasSuccessful():

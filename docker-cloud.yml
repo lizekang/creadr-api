@@ -1,0 +1,9 @@
+creadr-api:
+  image: martinney/creadr-api
+  autorestart: always
+  autoredeploy: true
+  ports:
+    - "80:80"
+  roles:
+    - global
+  deployment_strategy: high_availability
