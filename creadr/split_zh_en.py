@@ -66,5 +66,3 @@ def is_zh(c):
 
     else:
         return False
-
-#print split_zh_en('虽然对str调用encode()方法是错误的')
