@@ -19,16 +19,8 @@ def test():
 
     """Runs the unit tests without test coverage."""
 
-    # tests = unittest.TestLoader().discover('test', pattern='test_*.py')
-    # result = unittest.TextTestRunner(verbosity=2).run(tests)
-
     errno = pytest.main(args=['-v', './test'])
     return errno
-    # sys.exit(errno)
-    # if result.wasSuccessful():
-        # return 0
-    # return 1
-
 
 @manager.command
 def cov():
