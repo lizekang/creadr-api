@@ -46,8 +46,5 @@ def test_cut():
         result = cut(text)
         for obj, obj_expected in six.moves.zip(result, expected):
             assert obj['word'] == obj_expected.word
-<<<<<<< HEAD
-=======
             assert obj['pinyin'] == obj_expected.pinyin
             assert obj['nature'] == obj_expected.nature
->>>>>>> creadr/master
