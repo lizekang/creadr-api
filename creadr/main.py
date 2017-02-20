@@ -7,8 +7,6 @@ from flask import render_template, jsonify, request
 from pypinyin import pinyin, lazy_pinyin
 import jieba
 from creadr_text_processing import cut
-# import thulac
-# import json
 import logging
 
 @app.route('/')
