@@ -38,7 +38,7 @@ def split_zh_en(string):
 
 
 def is_zh(c):
-    # c needs to by a unicode string
+    # c needs to be a unicode char
     x = ord(c)
     # Punct & Radicals
     if x >= 0x2e80 and x <= 0x33ff:

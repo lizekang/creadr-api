@@ -1,0 +1,8 @@
+version: '2'
+services:
+  creadr-api:
+    build: .
+    ports:
+      - "80:80"
+  creadr-frontend:
+    image: martinney/creadr-frontend

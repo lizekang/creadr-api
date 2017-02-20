@@ -7,8 +7,9 @@ from flask import render_template, jsonify, request
 from pypinyin import pinyin, lazy_pinyin
 import jieba
 from creadr_text_processing import cut
-# import thulac
-# import json
+<<<<<<< HEAD
+=======
+>>>>>>> creadr/master
 import logging
 
 @app.route('/')
