@@ -21,14 +21,27 @@ class MainTestCase(unittest.TestCase):
         assert '404' in r.data.decode('utf-8')
         # print 'templates ok'
 
-    def test_route(self):
+    def route_api(self):
+        # request /api
         app.testing = True
         client = app.test_client()
-
         r = client.get('/api')
-        assert isinstance(json.loads(r.data.decode('utf-8')), (object))
-        # print 'route ok'
+        return r
 
+    def route_api_getResult(self):
+        # request /api/getResult
+        app.testing = True
+        client = app.test_client()
+        r = client.post('/api/getResult',data={'text': '需要注意的是'}, follow_redirects=True)
+        return r
+    def test_route(self):
+        # test /api and /api/getResult
+        print(self.route_api_getResult().data)
+        assert isinstance(json.loads(self.route_api().data.decode('utf-8')), (object))
+
+        assert isinstance(json.loads(self.route_api_getResult().data.decode('utf-8')), (object))
+
+        # print 'route ok'
 
 
 if __name__ == '__main__':

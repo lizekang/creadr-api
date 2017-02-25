@@ -3,7 +3,7 @@
 
 from app import app
 
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, make_response
 from pypinyin import pinyin, lazy_pinyin
 import jieba
 from creadr_text_processing import cut
@@ -23,7 +23,22 @@ def all_api():
 
 @app.route('/api/getResult',methods=['POST'])
 def return_json():
+    '''response the post and return the result of cutting text
+    post format {'text': '需要注意encode()0的是,'}
+    Returns: jsonified data
+    Examples:
+        you should run server first (./manage.py runserver)
+        >>> import requests
+        >>> msg = {'text': '需要注意encode()0的是,'}
+        >>> r = requests.post("http://127.0.0.1:8080/api/getResult", data=msg)
+        >>> print(r.text)
+    '''
     text = request.form.get('text').encode('utf-8')
+    # resp = make_response(jsonify(cut(text)))
+    # resp.headers['Access-Control-Allow-Origin'] = '*'
+    # resp.headers['Access-Control-Allow-Methods'] = 'POST'
+    # resp.headers['Access-Control-Allow-Headers'] = 'x-requested-with,content-type'
+    # return resp
     return jsonify(cut(text))
 
 @app.route('/cut/<text>')
