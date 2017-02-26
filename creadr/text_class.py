@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from pypinyin import pinyin
+import six
 
 class AnalyzedWord(object):
     """Summary of class here.
@@ -14,7 +15,10 @@ class AnalyzedWord(object):
     def __init__(self, word, nature):
         self.word = word
         self.nature = nature
-        self.pinyin = self.get_pinyin(word)
+        if nature == 'en':
+            self.pinyin = []
+        else:
+            self.pinyin = self.get_pinyin(word)
 
     def get_pinyin(self, word):
         """use pypinyin to get pinyin of word"""
@@ -26,8 +30,17 @@ class AnalyzedWord(object):
 
     def to_json(self):
         """demo one way to display word, pinyin and nature in json"""
+        word_result = []
+        word_obj = {}
+        for word, pinyin in six.moves.zip(self.word, self.pinyin):
+            word_obj['pinyin'] = pinyin
+            word_obj['word'] = word
+            word_result.append(word_obj)
         return {
-            'word': self.word,
-            'pinyin': self.pinyin,
+            'word_obj': word_result,
             'nature': self.nature
         }
+
+
+
+#{'nature': 'v', 'wordobj': [{'pinyin': "", 'word': ""}, {'pinyin': "", 'word': ""}]}
