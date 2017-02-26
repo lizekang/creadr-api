@@ -19,7 +19,10 @@ class AnalyzedWord(object):
     def get_pinyin(self, word):
         """use pypinyin to get pinyin of word"""
         pins = pinyin(word)
-        return pins
+        result = []
+        for pin in pins:
+            result.append(pin[0])
+        return result
 
     def to_json(self):
         """demo one way to display word, pinyin and nature in json"""
