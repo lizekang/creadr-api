@@ -46,3 +46,15 @@ def test_cut():
         result = cut(text)
         for obj, obj_expected in six.moves.zip(result, expected):
             assert obj['nature'] == obj_expected.nature
+
+# test class, mainly test to_json() function
+def test_class():
+    a = AnalyzedWord(u'需要', u'v')
+    b = AnalyzedWord(u'xuyao', u'en')
+    c = AnalyzedWord(u',', u'x')
+    a_expected = {'nature': 'v', 'word_obj': [{'pinyin': u"x\u016b", 'word': u"需"}, {'pinyin': u"y\u00e0o", 'word': u"要"}]}
+    b_expected = {'nature': 'en', 'word_obj': [{'pinyin': u"", 'word': u"xuyao"}]}
+    c_expected = {'nature': 'x', 'word_obj': [{'pinyin': u"", 'word': u","}]}
+    assert a.to_json() == a_expected
+    assert b.to_json() == b_expected
+    assert c.to_json() == c_expected

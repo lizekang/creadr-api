@@ -15,8 +15,8 @@ class AnalyzedWord(object):
     def __init__(self, word, nature):
         self.word = word
         self.nature = nature
-        if nature == 'en':
-            self.pinyin = []
+        if nature == 'en' or nature == 'x':
+            self.pinyin = ""
         else:
             self.pinyin = self.get_pinyin(word)
 
@@ -31,16 +31,21 @@ class AnalyzedWord(object):
     def to_json(self):
         """demo one way to display word, pinyin and nature in json"""
         word_result = []
-        word_obj = {}
-        for word, pinyin in six.moves.zip(self.word, self.pinyin):
-            word_obj['pinyin'] = pinyin
-            word_obj['word'] = word
+        if self.nature != 'en' and self.nature != 'x':
+            for word, pinyin in six.moves.zip(self.word, self.pinyin):
+                word_obj = {}
+                word_obj['pinyin'] = pinyin
+                word_obj['word'] = word
+                word_result.append(word_obj)
+        else:
+            word_obj = {}
+            word_obj['pinyin'] = self.pinyin
+            word_obj['word'] = self.word
             word_result.append(word_obj)
         return {
             'word_obj': word_result,
             'nature': self.nature
         }
-
 
 
 #{'nature': 'v', 'wordobj': [{'pinyin': "", 'word': ""}, {'pinyin': "", 'word': ""}]}
