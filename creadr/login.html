@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gooogle Login JavaScript Example</title>
+<meta charset="UTF-8">
+<meta name="google-signin-client_id" content="327170481403-9lservm52kvut5o90kp6ho11p6s2b447.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+<script>
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log('Id Token: ' + id_token);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://127.0.0.1:8080/signin');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+      console.log('Signed in as: ' + xhr.responseText);
+    };
+    xhr.send('idtoken=' + id_token);
+}
+</script>
+
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<p>hello</p>
+</body>
+</html>
